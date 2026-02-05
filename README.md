@@ -165,6 +165,34 @@ From the project root:
 | `bun run db:down` | Stop the local database |
 | `bun run db:push` | Push schema changes |
 | `bun run db:studio` | Open database UI |
+| `bun run ruler:apply` | Regenerate AI agent config files |
+
+## AI Agent Configuration (Ruler)
+
+This project uses [Ruler](https://github.com/AugmentedReality-Danny/ruler) to manage AI coding assistant configurations. Ruler generates agent-specific config files (`CLAUDE.md`, `COPILOT.md`, etc.) from a single source of truth.
+
+### How it works
+
+```
+.ruler/
+├── ruler.toml      # Configuration (MCP servers, target agents)
+├── project.md      # Project instructions (edit this file)
+└── skills/         # Best practice rules for agents
+```
+
+1. Edit `.ruler/project.md` to update project instructions
+2. Run `bun run ruler:apply` to regenerate all agent config files
+3. The generated files (like `CLAUDE.md`) are committed to the repo
+
+### Configured MCP servers
+
+Ruler configures these MCP servers for AI agents:
+
+| Server | Purpose |
+|--------|---------|
+| context7 | Up-to-date library documentation |
+| shadcn | Component registry access |
+| better-auth | Auth framework assistance |
 
 ## Troubleshooting
 

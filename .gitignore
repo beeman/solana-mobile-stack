@@ -54,8 +54,6 @@ local.db*
 /.agent/skills
 /.agents/skills
 /.claude/skills
-/.codex/config.json
-/.codex/config.json.bak
 /.codex/config.toml
 /.codex/config.toml.bak
 /.codex/skills

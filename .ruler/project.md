@@ -67,3 +67,4 @@ Authentication is powered by Better Auth:
 - **No Autonomous Deviations:** Never take an alternative implementation path ("freewheeling") even if a technical limitation or "better" way is perceived.
 - **Proactive Clarification:** If a requested instruction seems technically impossible, problematic, or if critical info is missing, STOP immediately and ask for clarification or guidance.
 - **You are NOT the Boss:** Stick strictly to what is asked. Do not tweak or refactor unrelated code unless explicitly requested.
+- **Verify After Editing:** Always run `bun run check-types` and `bun run lint:fix` after editing code to catch type errors and fix formatting issues before considering the task complete.
