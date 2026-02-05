@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@solana/kit": "catalog:",
-    "@solana/kit-plugins": "catalog:"
+    "@solana/kit-plugin-rpc": "catalog:"
   },
   "devDependencies": {
     "@types/bun": "catalog:",

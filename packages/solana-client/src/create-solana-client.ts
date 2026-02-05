@@ -1,5 +1,5 @@
 import { createEmptyClient } from '@solana/kit'
-import { rpc } from '@solana/kit-plugins'
+import { rpc } from '@solana/kit-plugin-rpc'
 
 export function createSolanaClient({
   url,

@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
 import { Loader2, Search, Wallet } from 'lucide-react'
 import { useState } from 'react'
-
+import { useSolana } from '@/components/solana/use-solana.tsx'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -12,6 +12,8 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
+import { WalletDropdown } from '@/components/wallet-dropdown.tsx'
+import { PlaygroundFeature } from '@/features/playground/playground-feature.tsx'
 import { orpc } from '@/utils/orpc'
 
 export const Route = createFileRoute('/solana')({
@@ -19,6 +21,7 @@ export const Route = createFileRoute('/solana')({
 })
 
 function SolanaRoute() {
+  const { cluster, wallet } = useSolana()
   const [address, setAddress] = useState(
     'SEekKY1iUoWYJqZ3d9QBsfJytNx5RLBjBmgznkGrqbH',
   )
@@ -35,7 +38,12 @@ function SolanaRoute() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-md py-10">
+    <div className="mx-auto w-full max-w-md space-y-6 py-10">
+      {wallet ? (
+        <PlaygroundFeature cluster={cluster.id} wallet={wallet} />
+      ) : (
+        <WalletDropdown />
+      )}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">

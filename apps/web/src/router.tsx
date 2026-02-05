@@ -4,11 +4,12 @@ import type { ReactNode } from 'react'
 
 import './index.css'
 import Loader from './components/loader'
+import { SolanaProvider } from './components/solana/solana-provider'
 import { routeTree } from './routeTree.gen'
 import { orpc, queryClient } from './utils/orpc'
 
 export const getRouter = () => {
-  const router = createTanStackRouter({
+  return createTanStackRouter({
     routeTree,
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
@@ -16,10 +17,11 @@ export const getRouter = () => {
     defaultPendingComponent: () => <Loader />,
     defaultNotFoundComponent: () => <div>Not Found</div>,
     Wrap: ({ children }: { children: ReactNode }) => (
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <SolanaProvider>{children}</SolanaProvider>
+      </QueryClientProvider>
     ),
   })
-  return router
 }
 
 declare module '@tanstack/react-router' {

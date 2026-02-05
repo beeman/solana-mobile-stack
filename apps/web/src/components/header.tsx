@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router'
-
+import { ClusterDropdown } from '@/components/cluster-dropdown.tsx'
+import { WalletDropdown } from '@/components/wallet-dropdown.tsx'
 import UserMenu from './user-menu'
 
 export default function Header() {
@@ -24,6 +25,8 @@ export default function Header() {
           })}
         </nav>
         <div className="flex items-center gap-2">
+          <ClusterDropdown />
+          <WalletDropdown />
           <UserMenu />
         </div>
       </div>
