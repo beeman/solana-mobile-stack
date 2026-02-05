@@ -13,7 +13,7 @@ export async function createContext({ context }: CreateContextOptions) {
   })
 
   const solana = createSolanaClient({
-    url: env.SOLANA_RPC_URL,
+    url: env.SOLANA_ENDPOINT,
   })
 
   return {

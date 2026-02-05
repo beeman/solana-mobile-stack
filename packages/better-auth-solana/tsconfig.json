@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "extends": "@solana-mobile-stack/config/tsconfig.base.json"
+}

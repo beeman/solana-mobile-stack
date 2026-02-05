@@ -15,6 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card.tsx'
+import { PlaygroundUiWalletFeatureSignIn } from '@/features/playground/playground-ui-wallet-feature-sign-in.tsx'
 import { PlaygroundUiError } from './playground-ui-error.tsx'
 import { PlaygroundUiWalletAddress } from './playground-ui-wallet-address.tsx'
 import { PlaygroundUiWalletConnect } from './playground-ui-wallet-connect.tsx'
@@ -61,6 +62,25 @@ export function PlaygroundFeature({
       <PlaygroundUiWalletOverview wallet={wallet} />
       {account ? (
         <Fragment>
+          <ErrorBoundary
+            resetKeys={[wallet.name]}
+            fallbackRender={({ error }) => <PlaygroundUiError error={error} />}
+          >
+            <PlaygroundUiWalletFeatureSignIn
+              account={account}
+              onError={(err) =>
+                toast.error('Error signing in', { description: `${err}` })
+              }
+              onSuccess={(account) =>
+                toast.success('Signing in success', {
+                  description: (
+                    <PlaygroundUiWalletAddress address={account?.address} />
+                  ),
+                })
+              }
+              wallet={wallet}
+            />
+          </ErrorBoundary>
           <ErrorBoundary
             resetKeys={[wallet.name]}
             fallbackRender={({ error }) => <PlaygroundUiError error={error} />}

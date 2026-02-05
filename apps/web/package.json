@@ -18,6 +18,7 @@
     "@orpc/tanstack-query": "catalog:",
     "@solana-mobile-stack/api": "workspace:*",
     "@solana-mobile-stack/auth": "workspace:*",
+    "@solana-mobile-stack/better-auth-solana": "workspace:*",
     "@solana-mobile-stack/env": "workspace:*",
     "@solana-mobile-stack/solana-client": "workspace:*",
     "@solana-mobile/wallet-standard-mobile": "^0.4.4",

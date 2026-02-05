@@ -1,4 +1,5 @@
 import { expoClient } from '@better-auth/expo/client'
+import { solanaAuthClient } from '@solana-mobile-stack/better-auth-solana/client'
 import { env } from '@solana-mobile-stack/env/native'
 import { createAuthClient } from 'better-auth/react'
 import Constants from 'expo-constants'
@@ -12,5 +13,6 @@ export const authClient = createAuthClient({
       storagePrefix: Constants.expoConfig?.scheme as string,
       storage: SecureStore,
     }),
+    solanaAuthClient(),
   ],
 })

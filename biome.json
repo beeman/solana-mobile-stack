@@ -19,7 +19,6 @@
       "!**/routeTree.gen.ts",
       "!**/src-tauri",
       "!**/.nuxt",
-      "!bts.jsonc",
       "!**/.expo",
       "!**/.wrangler",
       "!**/.alchemy",

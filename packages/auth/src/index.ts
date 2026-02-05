@@ -1,4 +1,5 @@
 import { expo } from '@better-auth/expo'
+import { solanaAuth } from '@solana-mobile-stack/better-auth-solana'
 import { db } from '@solana-mobile-stack/db'
 import * as schema from '@solana-mobile-stack/db/schema/auth'
 import { env } from '@solana-mobile-stack/env/server'
@@ -13,11 +14,13 @@ export const auth = betterAuth({
   }),
   trustedOrigins: [
     env.CORS_ORIGIN,
+    'solana-mobile-stack://',
     'mybettertapp://',
     ...(env.NODE_ENV === 'development'
       ? [
           'exp://',
           'exp://**',
+          'solana-mobile-stack://**',
           'exp://192.168.*.*:*/**',
           'http://localhost:8081',
         ]
@@ -33,5 +36,13 @@ export const auth = betterAuth({
       httpOnly: true,
     },
   },
-  plugins: [expo()],
+  plugins: [
+    expo(),
+    solanaAuth({
+      domain: new URL(env.BETTER_AUTH_URL).hostname,
+      anonymous: true,
+      cluster: env.SOLANA_CLUSTER,
+      emailDomainName: env.SOLANA_EMAIL_DOMAIN,
+    }),
+  ],
 })

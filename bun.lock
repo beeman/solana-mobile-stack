@@ -32,13 +32,14 @@
         "@react-navigation/drawer": "^7.3.9",
         "@react-navigation/elements": "^2.8.1",
         "@solana-mobile-stack/api": "workspace:*",
+        "@solana-mobile-stack/better-auth-solana": "workspace:*",
         "@solana-mobile-stack/env": "workspace:*",
         "@solana-mobile-stack/solana-client": "workspace:*",
         "@solana/kit": "catalog:",
         "@stardazed/streams-text-encoding": "^1.0.2",
         "@tanstack/react-query": "^5.90.12",
         "@ungap/structured-clone": "^1.3.0",
-        "@wallet-ui/react-native-kit": "^3.1.0",
+        "@wallet-ui/react-native-kit": "https://pkg.pr.new/wallet-ui/wallet-ui/@wallet-ui/react-native-kit@396",
         "ai": "catalog:",
         "better-auth": "catalog:",
         "dotenv": "catalog:",
@@ -114,6 +115,7 @@
         "@orpc/tanstack-query": "catalog:",
         "@solana-mobile-stack/api": "workspace:*",
         "@solana-mobile-stack/auth": "workspace:*",
+        "@solana-mobile-stack/better-auth-solana": "workspace:*",
         "@solana-mobile-stack/env": "workspace:*",
         "@solana-mobile-stack/solana-client": "workspace:*",
         "@solana-mobile/wallet-standard-mobile": "^0.4.4",
@@ -189,6 +191,7 @@
       "name": "@solana-mobile-stack/auth",
       "dependencies": {
         "@better-auth/expo": "catalog:",
+        "@solana-mobile-stack/better-auth-solana": "workspace:*",
         "@solana-mobile-stack/db": "workspace:*",
         "@solana-mobile-stack/env": "workspace:*",
         "better-auth": "catalog:",
@@ -198,6 +201,19 @@
       "devDependencies": {
         "@solana-mobile-stack/config": "workspace:*",
         "typescript": "catalog:",
+      },
+    },
+    "packages/better-auth-solana": {
+      "name": "@solana-mobile-stack/better-auth-solana",
+      "version": "0.0.0",
+      "devDependencies": {
+        "@solana-mobile-stack/config": "workspace:*",
+        "@types/bun": "catalog:",
+        "typescript": "catalog:",
+      },
+      "peerDependencies": {
+        "@solana/kit": "catalog:",
+        "better-auth": "catalog:",
       },
     },
     "packages/config": {
@@ -1030,6 +1046,8 @@
 
     "@solana-mobile-stack/auth": ["@solana-mobile-stack/auth@workspace:packages/auth"],
 
+    "@solana-mobile-stack/better-auth-solana": ["@solana-mobile-stack/better-auth-solana@workspace:packages/better-auth-solana"],
+
     "@solana-mobile-stack/config": ["@solana-mobile-stack/config@workspace:packages/config"],
 
     "@solana-mobile-stack/db": ["@solana-mobile-stack/db@workspace:packages/db"],
@@ -1440,11 +1458,11 @@
 
     "@wallet-standard/wallet": ["@wallet-standard/wallet@1.1.0", "", { "dependencies": { "@wallet-standard/base": "^1.1.0" } }, "sha512-Gt8TnSlDZpAl+RWOOAB/kuvC7RpcdWAlFbHNoi4gsXsfaWa1QCT6LBcfIYTPdOZC9OVZUDwqGuGAcqZejDmHjg=="],
 
-    "@wallet-ui/core": ["@wallet-ui/core@3.1.0", "", { "dependencies": { "@nanostores/persistent": "1.1.0", "nanostores": "1.0.1" }, "peerDependencies": { "@solana/kit": "^5.0.0" } }, "sha512-8S75rqekcRtlIRX4FJdWazp0hE+wcrVO6wRBq0NtpooV89sfQJAdzmrzIZFfZwRMHgqd8yL5b/TnsOJYv68V0g=="],
+    "@wallet-ui/core": ["@wallet-ui/core@https://pkg.pr.new/wallet-ui/wallet-ui/@wallet-ui/core@9ea8831138ba4242c0a379adf4732c0376d1e621", { "dependencies": { "@nanostores/persistent": "1.1.0", "nanostores": "1.0.1" }, "peerDependencies": { "@solana/kit": "^5.0.0" } }],
 
     "@wallet-ui/react": ["@wallet-ui/react@3.1.0", "", { "dependencies": { "@nanostores/react": "^1.0.0", "@solana/react": "3.0.3", "@solana/wallet-standard-features": "1.3.0", "@wallet-standard/core": "1.1.1", "@wallet-standard/react": "1.0.1", "@wallet-ui/core": "3.1.0", "@zag-js/dialog": "1.24.2", "@zag-js/menu": "1.24.2", "@zag-js/react": "1.24.2", "nanostores": "^1.0.1" }, "peerDependencies": { "@solana/kit": "^5.0.0", "react": ">=18" } }, "sha512-S0PBZmPgXaE0SSsu+mTeYnThgwbsbnQSNm7qmgKY3ndlv9TAoTF/f6gDQ5Eu8rhT2By19PgITzvCfiEq4Udyyw=="],
 
-    "@wallet-ui/react-native-kit": ["@wallet-ui/react-native-kit@3.1.0", "", { "dependencies": { "@nanostores/react": "^1.0.0", "@react-native-async-storage/async-storage": "^2.2.0", "@solana-mobile/mobile-wallet-adapter-protocol": "^2.2.5", "@solana-mobile/mobile-wallet-adapter-protocol-kit": "^0.2.2", "@solana-program/memo": "^0.10.0", "@solana/kit": "^5.1.0", "@solana/react": "3.0.3", "@solana/wallet-standard-features": "1.3.0", "@wallet-standard/core": "1.1.1", "@wallet-standard/react": "1.0.1", "@wallet-ui/core": "3.1.0", "js-base64": "^3.7.8", "nanostores": "^1.1.0" }, "peerDependencies": { "react": ">=18" } }, "sha512-9O376xJA1UPIUMBgRF+Wz4P7heukYEP+gh6EXy2yBMLMMWU13wLWp5rIl6gO5vet6jnO4bZzAix3gijWlYAFDw=="],
+    "@wallet-ui/react-native-kit": ["@wallet-ui/react-native-kit@https://pkg.pr.new/wallet-ui/wallet-ui/@wallet-ui/react-native-kit@396", { "dependencies": { "@nanostores/react": "^1.0.0", "@react-native-async-storage/async-storage": "^2.2.0", "@solana-mobile/mobile-wallet-adapter-protocol": "^2.2.5", "@solana-mobile/mobile-wallet-adapter-protocol-kit": "^0.2.2", "@solana-program/memo": "^0.10.0", "@solana/kit": "^5.1.0", "@solana/react": "3.0.3", "@solana/wallet-standard-features": "1.3.0", "@wallet-standard/core": "1.1.1", "@wallet-standard/react": "1.0.1", "@wallet-ui/core": "https://pkg.pr.new/wallet-ui/wallet-ui/@wallet-ui/core@9ea8831138ba4242c0a379adf4732c0376d1e621", "js-base64": "^3.7.8", "nanostores": "^1.1.0" }, "peerDependencies": { "react": ">=18" } }],
 
     "@xmldom/xmldom": ["@xmldom/xmldom@0.8.11", "", {}, "sha512-cQzWCtO6C8TQiYl1ruKNn2U6Ao4o4WBBcbL61yJl84x+j5sOWWFU9X7DpND8XZG3daDppSsigMdfAIl2upQBRw=="],
 
@@ -3786,6 +3804,8 @@
 
     "@wallet-ui/react/@solana/react": ["@solana/react@3.0.3", "", { "dependencies": { "@solana/addresses": "3.0.3", "@solana/errors": "3.0.3", "@solana/keys": "3.0.3", "@solana/promises": "3.0.3", "@solana/signers": "3.0.3", "@solana/transactions": "3.0.3", "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/errors": "^0.1.1", "@wallet-standard/ui": "^1.0.1", "@wallet-standard/ui-registry": "^1.0.1" }, "peerDependencies": { "react": ">=18" } }, "sha512-ewm/hCtGzNxddqBeFlOXgxQw8XjM9p8rHSxc/0YkgJjEQo+hUGEaDI6MRyUZUPXkzDk9ridanLLi3LLFnM8n/w=="],
 
+    "@wallet-ui/react/@wallet-ui/core": ["@wallet-ui/core@3.1.0", "", { "dependencies": { "@nanostores/persistent": "1.1.0", "nanostores": "1.0.1" }, "peerDependencies": { "@solana/kit": "^5.0.0" } }, "sha512-8S75rqekcRtlIRX4FJdWazp0hE+wcrVO6wRBq0NtpooV89sfQJAdzmrzIZFfZwRMHgqd8yL5b/TnsOJYv68V0g=="],
+
     "@wallet-ui/react-native-kit/@solana/kit": ["@solana/kit@5.5.1", "", { "dependencies": { "@solana/accounts": "5.5.1", "@solana/addresses": "5.5.1", "@solana/codecs": "5.5.1", "@solana/errors": "5.5.1", "@solana/functional": "5.5.1", "@solana/instruction-plans": "5.5.1", "@solana/instructions": "5.5.1", "@solana/keys": "5.5.1", "@solana/offchain-messages": "5.5.1", "@solana/plugin-core": "5.5.1", "@solana/programs": "5.5.1", "@solana/rpc": "5.5.1", "@solana/rpc-api": "5.5.1", "@solana/rpc-parsed-types": "5.5.1", "@solana/rpc-spec-types": "5.5.1", "@solana/rpc-subscriptions": "5.5.1", "@solana/rpc-types": "5.5.1", "@solana/signers": "5.5.1", "@solana/sysvars": "5.5.1", "@solana/transaction-confirmation": "5.5.1", "@solana/transaction-messages": "5.5.1", "@solana/transactions": "5.5.1" }, "peerDependencies": { "typescript": "^5.0.0" }, "optionalPeers": ["typescript"] }, "sha512-irKUGiV2yRoyf+4eGQ/ZeCRxa43yjFEL1DUI5B0DkcfZw3cr0VJtVJnrG8OtVF01vT0OUfYOcUn6zJW5TROHvQ=="],
 
     "@wallet-ui/react-native-kit/@solana/react": ["@solana/react@3.0.3", "", { "dependencies": { "@solana/addresses": "3.0.3", "@solana/errors": "3.0.3", "@solana/keys": "3.0.3", "@solana/promises": "3.0.3", "@solana/signers": "3.0.3", "@solana/transactions": "3.0.3", "@solana/wallet-standard-features": "^1.3.0", "@wallet-standard/base": "^1.1.0", "@wallet-standard/errors": "^0.1.1", "@wallet-standard/ui": "^1.0.1", "@wallet-standard/ui-registry": "^1.0.1" }, "peerDependencies": { "react": ">=18" } }, "sha512-ewm/hCtGzNxddqBeFlOXgxQw8XjM9p8rHSxc/0YkgJjEQo+hUGEaDI6MRyUZUPXkzDk9ridanLLi3LLFnM8n/w=="],
@@ -4567,6 +4587,8 @@
     "@wallet-ui/react/@solana/react/@solana/signers": ["@solana/signers@3.0.3", "", { "dependencies": { "@solana/addresses": "3.0.3", "@solana/codecs-core": "3.0.3", "@solana/errors": "3.0.3", "@solana/instructions": "3.0.3", "@solana/keys": "3.0.3", "@solana/nominal-types": "3.0.3", "@solana/transaction-messages": "3.0.3", "@solana/transactions": "3.0.3" }, "peerDependencies": { "typescript": ">=5.3.3" } }, "sha512-UwCd/uPYTZiwd283JKVyOWLLN5sIgMBqGDyUmNU3vo9hcmXKv5ZGm/9TvwMY2z35sXWuIOcj7etxJ8OoWc/ObQ=="],
 
     "@wallet-ui/react/@solana/react/@solana/transactions": ["@solana/transactions@3.0.3", "", { "dependencies": { "@solana/addresses": "3.0.3", "@solana/codecs-core": "3.0.3", "@solana/codecs-data-structures": "3.0.3", "@solana/codecs-numbers": "3.0.3", "@solana/codecs-strings": "3.0.3", "@solana/errors": "3.0.3", "@solana/functional": "3.0.3", "@solana/instructions": "3.0.3", "@solana/keys": "3.0.3", "@solana/nominal-types": "3.0.3", "@solana/rpc-types": "3.0.3", "@solana/transaction-messages": "3.0.3" }, "peerDependencies": { "typescript": ">=5.3.3" } }, "sha512-iMX+n9j4ON7H1nKlWEbMqMOpKYC6yVGxKKmWHT1KdLRG7v+03I4DnDeFoI+Zmw56FA+7Bbne8jwwX60Q1vk/MQ=="],
+
+    "@wallet-ui/react/@wallet-ui/core/nanostores": ["nanostores@1.0.1", "", {}, "sha512-kNZ9xnoJYKg/AfxjrVL4SS0fKX++4awQReGqWnwTRHxeHGZ1FJFVgTqr/eMrNQdp0Tz7M7tG/TDaX8QfHDwVCw=="],
 
     "babel-jest/chalk/ansi-styles": ["ansi-styles@4.3.0", "", { "dependencies": { "color-convert": "^2.0.1" } }, "sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg=="],
 

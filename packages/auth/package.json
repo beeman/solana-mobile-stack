@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@better-auth/expo": "catalog:",
+    "@solana-mobile-stack/better-auth-solana": "workspace:*",
     "@solana-mobile-stack/db": "workspace:*",
     "@solana-mobile-stack/env": "workspace:*",
     "better-auth": "catalog:",

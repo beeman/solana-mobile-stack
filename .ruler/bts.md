@@ -52,14 +52,6 @@ Authentication is powered by Better Auth:
 - Web app auth client is in `apps/web/src/lib/auth-client.ts`
 - Native app auth client is in `apps/native/src/lib/auth-client.ts`
 
-## Project Configuration
-
-This project includes a `bts.jsonc` configuration file that stores your Better-T-Stack settings:
-
-- Contains your selected stack configuration (database, ORM, backend, frontend, etc.)
-- Used by the CLI to understand your project structure
-- Safe to delete if not needed
-
 ## Key Points
 
 - This is a Turborepo monorepo using bun workspaces

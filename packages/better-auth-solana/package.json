@@ -1,0 +1,22 @@
+{
+  "peerDependencies": {
+    "@solana/kit": "catalog:",
+    "better-auth": "catalog:"
+  },
+  "devDependencies": {
+    "@types/bun": "catalog:",
+    "@solana-mobile-stack/config": "workspace:*",
+    "typescript": "catalog:"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "name": "@solana-mobile-stack/better-auth-solana",
+  "private": false,
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  },
+  "type": "module",
+  "version": "0.0.0"
+}

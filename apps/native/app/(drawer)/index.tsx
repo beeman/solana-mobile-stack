@@ -7,6 +7,7 @@ import { Container } from '@/components/container'
 import { SignIn } from '@/components/sign-in'
 import { SignUp } from '@/components/sign-up'
 import { SolanaConnect } from '@/components/solana-connect'
+import { SolanaSignInButton } from '@/components/solana-sign-in-button'
 import { authClient } from '@/lib/auth-client'
 import { orpc, queryClient } from '@/utils/orpc'
 
@@ -106,6 +107,14 @@ export default function Home() {
 
       {!session?.user && (
         <View className="flex gap-6">
+          <SolanaSignInButton />
+          <View className="flex-row items-center gap-4">
+            <View className="h-[1] flex-1 bg-muted/20" />
+            <Text className="text-muted text-xs uppercase">
+              Or continue with email
+            </Text>
+            <View className="h-[1] flex-1 bg-muted/20" />
+          </View>
           <SignIn />
           <SignUp />
         </View>
