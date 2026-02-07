@@ -6,7 +6,10 @@ export const env = createEnv({
   server: {
     BETTER_AUTH_SECRET: z.string().min(32),
     BETTER_AUTH_URL: z.url(),
-    CORS_ORIGIN: z.url(),
+    CORS_ORIGINS: z
+      .string()
+      .transform((val) => val.split(',').map((url) => url.trim()))
+      .pipe(z.array(z.url())),
     DATABASE_AUTH_TOKEN: z.string().min(1),
     DATABASE_URL: z.string().min(1),
     NODE_ENV: z

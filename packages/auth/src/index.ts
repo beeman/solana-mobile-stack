@@ -13,9 +13,7 @@ export const auth = betterAuth({
     schema: schema,
   }),
   trustedOrigins: [
-    env.CORS_ORIGIN,
-    'solana-mobile-monorepo://',
-    'mybettertapp://',
+    ...env.CORS_ORIGINS,
     ...(env.NODE_ENV === 'development'
       ? [
           'exp://',
