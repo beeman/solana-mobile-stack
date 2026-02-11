@@ -1,9 +1,49 @@
 services:
   db:
     image: ghcr.io/tursodatabase/libsql-server:latest
-    ports:
-      - "8080:8080"
     volumes:
-      - ./tmp/data/libsql:/var/lib/sqld
+      - db-data:/var/lib/sqld
     environment:
       - SQLD_NODE=primary
+    networks:
+      - internal
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    environment:
+      - BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET:?BETTER_AUTH_SECRET is required}
+      - BETTER_AUTH_URL=${BETTER_AUTH_URL:-http://localhost:3000}
+      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:3001,solana-mobile-monorepo://}
+      - DATABASE_URL=http://db:8080
+      - DATABASE_AUTH_TOKEN=local
+      - PORT=3000
+      - SOLANA_CLUSTER=${SOLANA_CLUSTER:-devnet}
+      - SOLANA_EMAIL_DOMAIN=${SOLANA_EMAIL_DOMAIN:-example.com}
+      - SOLANA_ENDPOINT=${SOLANA_ENDPOINT:-https://api.devnet.solana.com}
+    ports:
+      - "${SERVER_PORT:-3000}:3000"
+    depends_on:
+      - db
+    networks:
+      - internal
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+      args:
+        - VITE_SERVER_URL=${VITE_SERVER_URL:-http://localhost:3000}
+    ports:
+      - "${WEB_PORT:-3001}:3001"
+    depends_on:
+      - server
+    networks:
+      - internal
+
+volumes:
+  db-data:
+
+networks:
+  internal:

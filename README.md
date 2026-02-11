@@ -27,7 +27,7 @@ A full-stack starter kit for building mobile apps on Solana. Built with Expo, Re
 ## Prerequisites
 
 - [Bun](https://bun.sh) (v1.0+)
-- [Docker](https://docker.com) (for local database)
+- [Turso CLI](https://docs.turso.tech/cli/installation) (for local database)
 - Android Studio with an emulator, or a physical Android device
 
 ## Getting Started
@@ -45,13 +45,19 @@ Running `bun rename` without arguments detects that the directory name differs f
 
 ### 2. Set Up the Database
 
-Start the local database:
+Start a local libSQL database:
 
 ```bash
-bun run db:up
+bun run db:dev
 ```
 
-This starts a LibSQL server on port 8080. Add `-d` to run in the background: `bun run db:up -- -d`
+This starts a libSQL server on port 8080 using the [Turso CLI](https://docs.turso.tech/cli/installation).
+
+Alternatively, if you prefer Docker:
+
+```bash
+docker run --rm -p 8080:8080 ghcr.io/tursodatabase/libsql-server:latest
+```
 
 Copy the environment file:
 
@@ -150,6 +156,34 @@ The app includes an AI chat feature powered by Google Gemini. To enable it:
    ```
 4. Restart the server
 
+## Deployment
+
+The project includes a `docker-compose.yml` for containerized deployment. It runs the database, server, and web app together with no ports exposed on the database.
+
+### Deploy on Dokploy
+
+1. Create a new **Compose** project pointing to your fork
+2. Set the compose path to `./docker-compose.yml`
+3. Configure environment variables and domains in Dokploy
+4. Deploy
+
+### Deploy with Docker Compose
+
+1. Create a `.env` file in the project root with your production values (see [Environment Variables](#environment-variables) for a full list).
+2. Add the following deployment-specific variables to your `.env` file:
+   ```dotenv
+   BETTER_AUTH_SECRET=<your-secret>
+   BETTER_AUTH_URL=https://your-api-domain.com
+   CORS_ORIGINS=https://your-web-domain.com
+   VITE_SERVER_URL=https://your-api-domain.com
+   ```
+3. Run:
+   ```bash
+   docker compose up -d --build
+   ```
+
+The compose file uses sensible defaults for all variables. For reverse proxy setups, point your domains to the exposed ports (`SERVER_PORT` defaults to 3000, `WEB_PORT` defaults to 3001).
+
 ## Available Scripts
 
 From the project root:
@@ -159,10 +193,9 @@ From the project root:
 | `bun rename <name>` | Rename the project across all files |
 | `bun run build` | Build all apps |
 | `bun run check-types` | TypeScript type checking |
-| `bun run db:down` | Stop the local database |
+| `bun run db:dev` | Start local database (Turso dev server on port 8080) |
 | `bun run db:push` | Push schema changes |
 | `bun run db:studio` | Open database UI |
-| `bun run db:up` | Start the local database |
 | `bun run dev` | Start all apps in development mode |
 | `bun run dev:native` | Start only the mobile app dev server |
 | `bun run dev:server` | Start only the API server |
@@ -212,9 +245,8 @@ Make sure you've run `bun run android` at least once from `apps/native/` to crea
 
 ### Database connection errors
 
-- Verify Docker is running: `docker ps`
-- Check that the database is up: `bun run db:up`
-- Ensure `DATABASE_URL` in `.env` matches your setup
+- Verify the database is running: `bun run db:dev`
+- Ensure `DATABASE_URL` in `.env` matches your setup (default: `http://localhost:8080`)
 
 ## License
 
