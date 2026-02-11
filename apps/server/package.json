@@ -6,8 +6,9 @@
     "build": "tsdown",
     "check-types": "tsc -b",
     "compile": "bun build --compile --minify --sourcemap --bytecode ./src/index.ts --outfile server",
+    "db:migrate": "cd ../../packages/db && bun run db:migrate",
     "dev": "bun run --hot src/index.ts",
-    "start": "bun run dist/index.mjs"
+    "start": "bun run db:migrate && bun run dist/index.mjs"
   },
   "dependencies": {
     "@ai-sdk/devtools": "^0.0.2",
