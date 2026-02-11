@@ -4,6 +4,7 @@ WORKDIR /app
 COPY bun.lock package.json turbo.json tsconfig.json ./
 COPY apps ./apps
 COPY packages ./packages
+COPY scripts ./scripts
 COPY turbo ./turbo
 
 RUN bun install --frozen-lockfile --linker=hoisted
