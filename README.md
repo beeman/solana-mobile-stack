@@ -35,10 +35,13 @@ A full-stack starter kit for building mobile apps on Solana. Built with Expo, Re
 ### 1. Clone and Install
 
 ```bash
-git clone https://github.com/beeman/solana-mobile-monorepo.git
-cd solana-mobile-monorepo
+git clone https://github.com/beeman/solana-mobile-monorepo.git my-app
+cd my-app
+bun rename
 bun install
 ```
+
+Running `bun rename` without arguments detects that the directory name differs from the project name and prompts you to rename. You can also pass a name explicitly: `bun rename my-app`.
 
 ### 2. Set Up the Database
 
@@ -153,18 +156,19 @@ From the project root:
 
 | Command | Description |
 |---------|-------------|
-| `bun run dev` | Start all apps in development mode |
-| `bun run dev:native` | Start only the mobile app dev server |
-| `bun run dev:web` | Start only the web app |
-| `bun run dev:server` | Start only the API server |
+| `bun rename <name>` | Rename the project across all files |
 | `bun run build` | Build all apps |
 | `bun run check-types` | TypeScript type checking |
-| `bun run lint` | Run linting and formatting checks |
-| `bun run lint:fix` | Fix linting and formatting issues |
-| `bun run db:up` | Start the local database |
 | `bun run db:down` | Stop the local database |
 | `bun run db:push` | Push schema changes |
 | `bun run db:studio` | Open database UI |
+| `bun run db:up` | Start the local database |
+| `bun run dev` | Start all apps in development mode |
+| `bun run dev:native` | Start only the mobile app dev server |
+| `bun run dev:server` | Start only the API server |
+| `bun run dev:web` | Start only the web app |
+| `bun run lint` | Run linting and formatting checks |
+| `bun run lint:fix` | Fix linting and formatting issues |
 | `bun run ruler:apply` | Regenerate AI agent config files |
 
 ## AI Agent Configuration (Ruler)

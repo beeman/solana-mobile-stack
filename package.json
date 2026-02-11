@@ -5,6 +5,7 @@
     "packages": [
       "apps/*",
       "packages/*",
+      "scripts",
       "turbo/generators"
     ],
     "catalog": {
@@ -37,13 +38,13 @@
   "scripts": {
     "build": "turbo build",
     "check-types": "turbo check-types",
+    "db:down": "docker compose down",
     "db:generate": "turbo -F @solana-mobile-monorepo/db db:generate",
     "db:local": "turbo -F @solana-mobile-monorepo/db db:local",
     "db:migrate": "turbo -F @solana-mobile-monorepo/db db:migrate",
     "db:push": "turbo -F @solana-mobile-monorepo/db db:push",
     "db:studio": "turbo -F @solana-mobile-monorepo/db db:studio",
     "db:up": "docker compose up",
-    "db:down": "docker compose down",
     "dev": "turbo dev",
     "dev:native": "turbo -F native dev",
     "dev:server": "turbo -F server dev",
@@ -56,6 +57,7 @@
     "docker:run:web": "docker run --rm --name solana-mobile-monorepo-web --init --stop-signal=SIGINT -it -p 3001:3001 ghcr.io/beeman/solana-mobile-monorepo-web",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
+    "rename": "bun scripts/rename.ts",
     "ruler:apply": "bunx @intellectronica/ruler@latest apply --local-only",
     "start:web": "turbo -F web start",
     "test": "turbo test"
