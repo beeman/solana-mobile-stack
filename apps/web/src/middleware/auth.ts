@@ -4,14 +4,19 @@ import { authClient } from '@/lib/auth-client'
 
 export const authMiddleware = createMiddleware().server(
   async ({ next, request }) => {
-    const session = await authClient.getSession({
-      fetchOptions: {
-        headers: request.headers,
-        throw: true,
-      },
-    })
-    return next({
-      context: { session },
-    })
+    try {
+      const session = await authClient.getSession({
+        fetchOptions: {
+          headers: request.headers,
+          throw: true,
+        },
+      })
+      return next({
+        context: { session },
+      })
+    } catch (error) {
+      console.error('[auth-middleware] getSession failed:', error)
+      throw error
+    }
   },
 )

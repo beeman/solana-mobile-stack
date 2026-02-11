@@ -1,14 +1,27 @@
 import { useQuery } from '@tanstack/react-query'
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import {
+  createFileRoute,
+  ErrorComponent,
+  redirect,
+} from '@tanstack/react-router'
 
 import { getUser } from '@/functions/get-user'
 import { orpc } from '@/utils/orpc'
 
 export const Route = createFileRoute('/dashboard')({
   component: RouteComponent,
+  errorComponent: ({ error }) => {
+    console.error('[dashboard] Route error:', error)
+    return <ErrorComponent error={error} />
+  },
   beforeLoad: async () => {
-    const session = await getUser()
-    return { session }
+    try {
+      const session = await getUser()
+      return { session }
+    } catch (error) {
+      console.error('[dashboard] beforeLoad error:', error)
+      throw error
+    }
   },
   loader: async ({
     context,
