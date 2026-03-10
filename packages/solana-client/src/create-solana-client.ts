@@ -8,6 +8,10 @@ export function createSolanaClient({
   url: string
   urlWs?: string
 }) {
-  urlWs = urlWs ?? url.replace('http', 'ws').replace('8899', '8900')
-  return createEmptyClient().use(rpc(url, urlWs ? { url: urlWs } : undefined))
+  const resolvedUrlWs =
+    urlWs ?? url.replace('http', 'ws').replace('8899', '8900')
+
+  return createEmptyClient().use(
+    rpc(url, resolvedUrlWs ? { url: resolvedUrlWs } : undefined),
+  )
 }
