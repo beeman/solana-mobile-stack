@@ -54,8 +54,10 @@
     "docker:push:web": "docker push ghcr.io/beeman/solana-mobile-monorepo-web",
     "docker:run:server": "docker run --rm --name solana-mobile-monorepo-server --init --stop-signal=SIGINT -it --env-file apps/server/.env -p 3000:3000 ghcr.io/beeman/solana-mobile-monorepo-server",
     "docker:run:web": "docker run --rm --name solana-mobile-monorepo-web --init --stop-signal=SIGINT -it -p 3001:3001 ghcr.io/beeman/solana-mobile-monorepo-web",
-    "lint": "biome check .",
-    "lint:fix": "biome check --write .",
+    "format": "oxfmt \"**/*.{cjs,cts,js,json,jsonc,jsx,mjs,mts,ts,tsx}\"",
+    "format:check": "oxfmt --check \"**/*.{cjs,cts,js,json,jsonc,jsx,mjs,mts,ts,tsx}\"",
+    "lint": "oxlint . && oxfmt --check \"**/*.{cjs,cts,js,json,jsonc,jsx,mjs,mts,ts,tsx}\"",
+    "lint:fix": "oxlint --fix . && oxfmt \"**/*.{cjs,cts,js,json,jsonc,jsx,mjs,mts,ts,tsx}\"",
     "postinstall": "bun run scripts/copy-env.ts",
     "rename": "bun scripts/rename.ts",
     "ruler:apply": "bunx @intellectronica/ruler@latest apply --local-only",
@@ -68,10 +70,11 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.2.0",
     "@solana-mobile-monorepo/config": "workspace:*",
     "@types/bun": "catalog:",
     "lefthook": "^2.0.13",
+    "oxfmt": "^0.37.0",
+    "oxlint": "^1.52.0",
     "turbo": "^2.6.3",
     "typescript": "catalog:"
   },

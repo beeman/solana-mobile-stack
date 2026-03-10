@@ -4,9 +4,9 @@
 pre-commit:
   parallel: true
   jobs:
-    - name: biome
-      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: bun biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+    - name: lint
+      glob: '*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}'
+      run: bunx oxlint --fix {staged_files} && bunx oxfmt --no-error-on-unmatched-pattern {staged_files}
       stage_fixed: true
 
 pre-push:

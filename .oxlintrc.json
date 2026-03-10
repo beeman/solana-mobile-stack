@@ -1,0 +1,39 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "error"
+  },
+  "ignorePatterns": [
+    "**/.alchemy",
+    "**/.codex",
+    "**/.expo",
+    "**/.next",
+    "**/.nuxt",
+    "**/.source",
+    "**/.svelte-kit",
+    "**/.turbo",
+    "**/.vscode",
+    "**/.wrangler",
+    "**/.zed",
+    "**/convex/_generated",
+    "**/dev-dist",
+    "**/dist",
+    "**/routeTree.gen.ts",
+    "**/src-tauri",
+    "**/wrangler.jsonc",
+    "apps/native/android",
+    "apps/native/ios"
+  ],
+  "plugins": ["oxc", "react", "typescript", "unicorn"],
+  "rules": {
+    "default-param-last": "error",
+    "no-else-return": "error",
+    "no-param-reassign": "error",
+    "react/exhaustive-deps": "warn",
+    "react/self-closing-comp": "error",
+    "typescript/no-inferrable-types": "error",
+    "typescript/prefer-as-const": "error",
+    "typescript/prefer-enum-initializers": "error",
+    "typescript/prefer-namespace-keyword": "error"
+  }
+}

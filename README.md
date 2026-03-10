@@ -200,6 +200,8 @@ From the project root:
 | `bun run dev:native` | Start only the mobile app dev server |
 | `bun run dev:server` | Start only the API server |
 | `bun run dev:web` | Start only the web app |
+| `bun run format` | Format JS, TS, and JSON files with oxfmt |
+| `bun run format:check` | Check JS, TS, and JSON formatting with oxfmt |
 | `bun run lint` | Run linting and formatting checks |
 | `bun run lint:fix` | Fix linting and formatting issues |
 | `bun run ruler:apply` | Regenerate AI agent config files |
